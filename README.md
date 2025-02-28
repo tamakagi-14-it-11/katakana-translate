@@ -1,3 +1,1 @@
-# kaken
-
-課題研究のフロントエンド開発用リポジトリ
+# katakana-translate
