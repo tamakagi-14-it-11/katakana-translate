@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>カタカナ語翻訳 | ユーザー辞書</title>
+	<link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+
+	<!-- <span id="dic-select-wrapper">
+			<select title="select-dictionary" id="dic-select"></select>
+		</span> -->
+	<br />
+	<span id="user-dic">
+		<table id="add-dic" class="add-dic">
+			<tr>
+				<th>翻訳元</th>
+				<th>意味</th>
+			</tr>
+			<tr>
+				<td><input type="text" id="original-words" /></td>
+				<td><input type="text" id="mean" /></td>
+			</tr>
+		</table>
+		<button id="add-frame">枠を追加</button>
+		<button id="del-frame">枠を削除</button>
+		<button id="save">保存</button>
+		<button id="load">読み込み</button>
+	</span>
+	<!-- <span id="buttons">
+			<span id="cam-button">
+				<a href="../image-input/">
+					<img id="cam" class="circle-button" src="../image/button_ocr.png" alt="camera" />
+				</a>
+			</span>
+			<span id="voice-button">
+				<a href="../voice-input/">
+					<img id="voice" class="circle-button" src="../image/button_mic.png" alt="recording-start" />
+				</a>
+			</span>
+			<span id="text-button">
+				<a href="../text-input/">
+					<img id="text" class="circle-button" src="../image/button_text.png" alt="text" />
+				</a>
+			</span>
+		</span> -->
+</body>
+<script src="../common.js"></script>
+<script src="./main.js"></script>
+
+</html>

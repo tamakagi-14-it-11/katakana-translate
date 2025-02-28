@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>カタカナ語翻訳 | 画像入力</title>
+		<link rel="stylesheet" href="./style.css" />
+		<style>
+			#preview {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- <span id="dic-select-wrapper">
+			<select title="select-dictionary" id="dic-select"></select>
+		</span> -->
+		<span id="mainContent">
+			<h1>画像をアップロード</h1>
+			<label for="file-input">
+				<div id="upload" class="upload">
+					<img src="../image/button_upload.png" alt="upload" />
+					<span>画像をアップロード</span>
+				</div>
+				<input type="file" id="file-input" accept="image/*" title="upload file" />
+			</label>
+			<img id="preview" alt="プレビュー" />
+			<h1>結果</h1>
+			<p id="result"></p>
+		</span>
+		<span id="buttons">
+			<span id="text-button">
+				<a href="../text-input/">
+					<img id="text" class="circle-button" src="../image/button_text.png" alt="text" />
+				</a>
+			</span>
+			<span id="rec-button">
+				<a href="../voice-input/">
+					<img id="rec" class="circle-button" src="../image/button_mic.png" alt="microphone" />
+				</a>
+			</span>
+		</span>
+	</body>
+	<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+	<script src="../common.js"></script>
+	<script src="./main.js"></script>
+</html>

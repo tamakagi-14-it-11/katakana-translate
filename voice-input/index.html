@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>カタカナ語翻訳 | 音声入力</title>
+		<link rel="stylesheet" href="./style.css" />
+		<style>
+			#vol-on {
+				display: none;
+			}
+			#rec-stop {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<span class="dic">
+			<span id="dic-select-wrapper">
+				<select title="select-dictionary" id="dic-select"></select>
+			</span>
+			<span id="userDic-button">
+				<a href="../user-dic/">
+					<img id="user-dic" class="user-dic" src="../image/button_user_dictionary.png" alt="user-dic" />
+				</a>
+			</span>
+		</span>
+		<div id="result"></div>
+		<br />
+		<div id="status"></div>
+		<br />
+		<span id="vol-buttons">
+			<img id="vol-off" class="vol-button" src="../image/button_vol_off.png" alt="volume-off" />
+			<img id="vol-on" class="vol-button" src="../image/button_vol_on.png" alt="volume-on" />
+		</span>
+		<span id="buttons">
+			<span id="cam-button">
+				<a href="../image-input/">
+					<img id="cam" class="circle-button" src="../image/button_ocr.png" alt="camera" />
+				</a>
+			</span>
+			<span id="text-button">
+				<a href="../text-input/">
+					<img id="text" class="circle-button" src="../image/button_text.png" alt="text" />
+				</a>
+			</span>
+		</span>
+		<span id="rec-buttons">
+			<img id="rec-start" class="circle-button" src="../image/button_rec_start.png" alt="recording-start" />
+			<img id="rec-stop" class="circle-button" src="../image/button_rec_stop.png" alt="recording-stop" />
+		</span>
+	</body>
+	<script src="../common.js"></script>
+	<script src="./main.js"></script>
+</html>

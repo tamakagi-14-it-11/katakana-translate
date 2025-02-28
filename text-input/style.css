@@ -1,0 +1,190 @@
+@charset "utf-8";
+
+body {
+	margin: 0; /*上下左右の間隔*/
+	position: relative;
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	background-color: #e8e8e8;
+}
+
+#dic-select-wrapper {
+	display: inline-flex;
+	position: relative;
+	align-items: center;
+	margin-left: 20px;
+	margin-top: 100px;
+}
+
+#dic-select-wrapper::after {
+	position: absolute;
+	right: 15px;
+	width: 10px;
+	height: 7px;
+	background-color: #535353;
+	clip-path: polygon(0 0, 100% 0, 50% 100%);
+	content: "";
+	pointer-events: none;
+}
+
+#dic-select {
+	appearance: none;
+	top: 100px;
+	min-width: 230px;
+	height: 2.8em;
+	padding: 0.4em calc(0.8em + 30px) 0.4em 0.8em;
+	border: 1px solid #000;
+	border-radius: 25px;
+	background-color: #b9b9b9;
+	color: #000;
+	font-size: 1em;
+	cursor: pointer;
+}
+
+.main-contents {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	width: 80%;
+	margin: 20px auto;
+}
+
+.text {
+	/* display: -webkit-flex; */
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
+	align-content: center;
+	width: 100%;
+	margin: 0;
+	flex-wrap: wrap;
+	font-size: 10.5pt;
+}
+
+.word-input {
+	position: relative;
+	margin: 0;
+	padding: 10px;
+	box-sizing: border-box;
+	width: 100%;
+	font-size: 1em;
+	resize: none;
+	word-break: normal;
+	overflow: auto;
+	line-break: anywhere;
+	white-space: pre-wrap;
+}
+
+.result-text {
+	position: relative;
+	font-size: 1em;
+	border: 1px solid #000;
+	background-color: #eeeeee;
+	word-break: normal;
+	overflow: auto;
+	line-break: anywhere;
+	white-space: pre-wrap;
+}
+
+.button-box {
+	position: relative;
+	display: flex;
+	top: 0;
+	left: 0;
+	height: 30px;
+	width: 100%;
+	background-color: #eeeeee;
+}
+
+.button-box > * {
+	left: 0;
+	height: 30px;
+	width: 30px;
+	margin-right: 10px;
+}
+
+#buttons {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	width: 100%;
+	margin: 0;
+}
+
+.circle-button {
+	border: 1px solid #000;
+	border-radius: 50%;
+	background-color: #b9b9b9;
+}
+
+#cam-button {
+	margin: 0 20px;
+}
+
+#rec-button {
+	margin: 0 20px;
+}
+
+@media (width <= 600px) {
+	.text {
+		flex-direction: column;
+	}
+
+	.word-input,
+	.result-text {
+		position: relative;
+		top: 0%;
+		min-height: 100px;
+		width: 100%;
+		padding: 10px;
+		box-sizing: border-box;
+	}
+
+	#cam-button > a > .circle-button {
+		height: 75px;
+		width: 75px;
+	}
+
+	#rec-button > a > .circle-button {
+		height: 75px;
+		width: 75px;
+	}
+}
+
+@media (600px < width) {
+	.text {
+		flex-direction: row;
+	}
+
+	.word-input,
+	.result-text {
+		position: relative;
+		top: 0%;
+		min-height: 100px;
+		width: 50%;
+		padding: 10px;
+		box-sizing: border-box;
+	}
+
+	.button-box::before {
+		content: "";
+		display: block;
+		height: 100%;
+		width: 50%;
+	}
+
+	#cam-button > a > .circle-button {
+		height: 100px;
+		width: 100px;
+	}
+
+	#rec-button > a > .circle-button {
+		height: 100px;
+		width: 100px;
+	}
+}
+
+/*＃はID。.はクラス*/

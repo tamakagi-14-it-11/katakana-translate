@@ -1,0 +1,50 @@
+[
+	{
+		"name": "katakana",
+		"displayName": "カタカナ語",
+		"fileName": "katakana.csv",
+		"contentType": "text/csv"
+	},
+	{
+		"name": "hokkaido",
+		"displayName": "方言_北海道（開発中）",
+		"fileName": "z01_hokkaido.csv",
+		"contentType": "text/csv"
+	},
+	{
+		"name": "aomori",
+		"displayName": "方言_青森（開発中）",
+		"fileName": "z02_aomori.csv",
+		"contentType": "text/csv"
+	},
+	{
+		"name": "iwate",
+		"displayName": "方言_岩手（開発中）",
+		"fileName": "z03_iwate.csv",
+		"contentType": "text/csv"
+	},
+	{
+		"name": "miyagi",
+		"displayName": "方言_宮城（開発中）",
+		"fileName": "z04_miyagi.csv",
+		"contentType": "text/csv"
+	},
+	{
+		"name": "akita",
+		"displayName": "方言_秋田（開発中）",
+		"fileName": "z05_akita.csv",
+		"contentType": "text/csv"
+	},
+	{
+		"name": "yamagata",
+		"displayName": "方言_山形（開発中）",
+		"fileName": "z06_yamagata.csv",
+		"contentType": "text/csv"
+	},
+	{
+		"name": "hukushima",
+		"displayName": "方言_福島（開発中）",
+		"fileName": "z07_hukushima.csv",
+		"contentType": "text/csv"
+	}
+]
