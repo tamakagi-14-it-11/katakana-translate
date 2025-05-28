@@ -10,7 +10,7 @@ const saveButton = document.getElementById("save");
 const loadButton = document.getElementById("load");
 
 //変数の宣言
-let userDictionalyList = [];
+let userDictionaryList = [];
 
 //枠の追加
 function add(word, mean) {
@@ -46,13 +46,13 @@ delFrame.addEventListener("click", del);
 
 //表から要素を取得し，ローカルストレージに保存
 function save() {
-	userDictionalyList = [];
+	userDictionaryList = [];
 	for (let i = 1; i < addDic.rows.length; i++) {
 		let word = addDic.rows[i].cells[0].children[0].value;
 		let mean = addDic.rows[i].cells[1].children[0].value;
-		userDictionalyList.push({ word: word, mean: mean });
+		userDictionaryList.push({ word: word, mean: mean });
 	}
-	localStorage.dicData = JSON.stringify(userDictionalyList);
+	localStorage.dicData = JSON.stringify(userDictionaryList);
 	console.log("保存しました");
 }
 
@@ -68,9 +68,9 @@ function load() {
 	}
 	let storedList = JSON.parse(localStorage.dicData); // 修正: キーを追加
 	if (storedList) {
-		userDictionalyList = storedList;
-		for (let i = 0; i < userDictionalyList.length; i++) {
-			add(userDictionalyList[i].word, userDictionalyList[i].mean);
+		userDictionaryList = storedList;
+		for (let i = 0; i < userDictionaryList.length; i++) {
+			add(userDictionaryList[i].word, userDictionaryList[i].mean);
 		}
 	}
 }
