@@ -80,11 +80,45 @@ body {
 	position: relative;
 	font-size: 1em;
 	border: 1px solid #000;
-	background-color: #eeeeee;
+	background-color: #f2f2f2;
 	word-break: normal;
 	overflow: auto;
 	line-break: anywhere;
 	white-space: pre-wrap;
+}
+
+.changed-word {
+	color: blue;
+	cursor: pointer;
+}
+.changed-word:hover {
+	text-decoration: underline;
+}
+
+.tooltip {
+	position: absolute;
+	background: #fff;
+	/* border-radius: 8px; */
+	font-size: 14px;
+	max-width: 200px;
+	z-index: 1000;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+	white-space: normal;
+	/* line-height: 1.4; */
+}
+.tooltip-original-word {
+	padding: 8px 12px;
+}
+.tooltip-changed-word {
+	padding: 8px 12px;
+	background: #eee;
+	cursor: pointer;
+}
+.tooltip-changed-word:hover {
+	filter: brightness(0.95);
+}
+.tooltip-changed-word-selected {
+	background: #ccf;
 }
 
 .button-box {

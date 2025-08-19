@@ -1,5 +1,6 @@
 //DOM要素の取得
 const dicSelect = document.getElementById("dic-select");
+const enableAI = document.getElementById("enable-ai");
 const textArea_status = document.getElementById("status");
 const textArea_result = document.getElementById("result");
 const btnRecStart = document.getElementById("rec-start");
@@ -10,10 +11,19 @@ const btnVolOff = document.getElementById("vol-off");
 const body = document.querySelector("body");
 
 //定数の宣言
-const useAI = false;
+let useAI = false;
 
 //変数の宣言
 let isReadingModeOn = false;
+
+//AI翻訳のチェックボックスのイベントリスナーを設定
+enableAI.addEventListener("change", function () {
+	if (enableAI.checked) {
+		useAI = true;
+	} else {
+		useAI = false;
+	}
+});
 
 //音声認識の変数
 let translatedText = "";

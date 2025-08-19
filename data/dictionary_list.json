@@ -2,49 +2,301 @@
 	{
 		"name": "katakana",
 		"displayName": "カタカナ語",
-		"fileName": "katakana.csv",
-		"contentType": "text/csv"
+		"data": [
+			{
+				"name": "katakana",
+				"displayName": "カタカナ語",
+				"fileName": "katakana.csv",
+				"contentType": "text/csv"
+			}
+		]
 	},
 	{
-		"name": "hokkaido",
-		"displayName": "方言_北海道（開発中）",
-		"fileName": "z01_hokkaido.csv",
-		"contentType": "text/csv"
-	},
-	{
-		"name": "aomori",
-		"displayName": "方言_青森（開発中）",
-		"fileName": "z02_aomori.csv",
-		"contentType": "text/csv"
-	},
-	{
-		"name": "iwate",
-		"displayName": "方言_岩手（開発中）",
-		"fileName": "z03_iwate.csv",
-		"contentType": "text/csv"
-	},
-	{
-		"name": "miyagi",
-		"displayName": "方言_宮城（開発中）",
-		"fileName": "z04_miyagi.csv",
-		"contentType": "text/csv"
-	},
-	{
-		"name": "akita",
-		"displayName": "方言_秋田（開発中）",
-		"fileName": "z05_akita.csv",
-		"contentType": "text/csv"
-	},
-	{
-		"name": "yamagata",
-		"displayName": "方言_山形（開発中）",
-		"fileName": "z06_yamagata.csv",
-		"contentType": "text/csv"
-	},
-	{
-		"name": "hukushima",
-		"displayName": "方言_福島（開発中）",
-		"fileName": "z07_hukushima.csv",
-		"contentType": "text/csv"
+		"name": "hougen",
+		"displayName": "方言",
+		"data": [
+			{
+				"name": "hokkaido",
+				"displayName": "方言_北海道",
+				"fileName": "z01_hokkaido.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "aomori",
+				"displayName": "方言_青森",
+				"fileName": "z02_aomori.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "iwate",
+				"displayName": "方言_岩手",
+				"fileName": "z03_iwate.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "miyagi",
+				"displayName": "方言_宮城",
+				"fileName": "z04_miyagi.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "akita",
+				"displayName": "方言_秋田",
+				"fileName": "z05_akita.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "yamagata",
+				"displayName": "方言_山形",
+				"fileName": "z06_yamagata.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "hukushima",
+				"displayName": "方言_福島",
+				"fileName": "z07_hukushima.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "ibaraki",
+				"displayName": "方言_茨城",
+				"fileName": "z08_ibaraki.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "tochigi",
+				"displayName": "方言_栃木",
+				"fileName": "z09_tochigi.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "gunma",
+				"displayName": "方言_群馬",
+				"fileName": "z10_gunma.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "saitama",
+				"displayName": "方言_埼玉",
+				"fileName": "z11_saitama.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "chiba",
+				"displayName": "方言_千葉",
+				"fileName": "z12_chiba.csv",
+				"contentType": "text/csv"
+				},
+			{
+				"name": "tokyo",
+				"displayName": "方言_東京",
+				"fileName": "z13_tokyo.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "kanagawa",
+				"displayName": "方言_神奈川",
+				"fileName": "z14_kanagawa.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "nigata",
+				"displayName": "方言_新潟",
+				"fileName": "z15_nigata.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "toyama",
+				"displayName": "方言_富山",
+				"fileName": "z16_toyama.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "ishikawa",
+				"displayName": "方言_石川",
+				"fileName": "z17_ishikawa.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "fukui",
+				"displayName": "方言_福井",
+				"fileName": "z18_fukui.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "yamanashi",
+				"displayName": "方言_山梨",
+				"fileName": "z19_yamanashi.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "nagano",
+				"displayName": "方言_長野",
+				"fileName": "z20_nagano.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "gifu",
+				"displayName": "方言_岐阜",
+				"fileName": "z21_gifu.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "shizuoka",
+				"displayName": "方言_静岡",
+				"fileName": "z22_shizuoka.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "aichi",
+				"displayName": "方言_愛知",
+				"fileName": "z23_aichi.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "mie",
+				"displayName": "方言_三重",
+				"fileName": "z24_mie.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "shiga",
+				"displayName": "方言_滋賀",
+				"fileName": "z25_shiga.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "kyoto",
+				"displayName": "方言_京都",
+				"fileName": "z26_kyoto.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "osaka",
+				"displayName": "方言_大阪",
+				"fileName": "z27_osaka.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "hyogo",
+				"displayName": "方言_兵庫",
+				"fileName": "z28_hyogo.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "nara",
+				"displayName": "方言_奈良",
+				"fileName": "z29_nara.csv",
+				"contentType": "text/csv"
+				},
+			{
+				"name": "wakayama",
+				"displayName": "方言_和歌山",
+				"fileName": "z30_wakayama.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "tottori",
+				"displayName": "方言_鳥取",
+				"fileName": "z31_tottori.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "shimane",
+				"displayName": "方言_島根",
+				"fileName": "z32_shimane.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "okayama",
+				"displayName": "方言_岡山",
+				"fileName": "z33_okayama.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "hiroshima",
+				"displayName": "方言_広島",
+				"fileName": "z34_hiroshima.csv",
+				"contentType": "text/csv"
+				},
+			{
+				"name": "yamaguchi",
+				"displayName": "方言_山口",
+				"fileName": "z35_yamaguchi.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "tokushima",
+				"displayName": "方言_徳島",
+				"fileName": "z36_tokushima.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "kagawa",
+				"displayName": "方言_香川",
+				"fileName": "z37_kagawa.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "ehime",
+				"displayName": "方言_愛媛",
+				"fileName": "z38_ehime.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "kochi",
+				"displayName": "方言_高知",
+				"fileName": "z39_kochi.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "fukuoka",
+				"displayName": "方言_福岡",
+				"fileName": "z40_fukuoka.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "saga",
+				"displayName": "方言_佐賀",
+				"fileName": "z41_saga.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "nagasaki",
+				"displayName": "方言_長崎",
+				"fileName": "z42_nagasaki.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "kumamoto",
+				"displayName": "方言_熊本",
+				"fileName": "z43_kumamoto.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "oita",
+				"displayName": "方言_大分",
+				"fileName": "z44_oita.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "miyazaki",
+				"displayName": "方言_宮崎",
+				"fileName": "z45_miyazaki.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "kagoshima",
+				"displayName": "方言_鹿児島",
+				"fileName": "z46_kagoshima.csv",
+				"contentType": "text/csv"
+			},
+			{
+				"name": "okinawa",
+				"displayName": "方言_沖縄",
+				"fileName": "z47_okinawa.csv",
+				"contentType": "text/csv"
+			}
+		]
 	}
 ]

@@ -1,5 +1,5 @@
 //定数の宣言
-apiUrl = "";
+const apiUrl = "https://api.tkg14it11.f5.si/api2/";
 
 //変数の宣言
 let dictionaryList = [];
@@ -34,66 +34,148 @@ async function getDictionaryData() {
 	console.log("getDictionaryData");
 	dictionaryData = [];
 	dictionaryDataKeys = [];
-	const url = "../data/" + dictionaryList[dictionaryIndex].fileName;
-	try {
-		const response = await fetch(url);
-		if (!response.ok) {
-			throw new Error(`レスポンスステータス: ${response.status}`);
+	for (let i = 0; i < dictionaryList[dictionaryIndex].data.length; i++) {
+		const url = "../data/" + dictionaryList[dictionaryIndex].data[i].fileName;
+		try {
+			const response = await fetch(url);
+			if (!response.ok) {
+				throw new Error(`レスポンスステータス: ${response.status}`);
+			}
+			await extractData(
+				response,
+				dictionaryList[dictionaryIndex].data[i].contentType,
+				dictionaryList[dictionaryIndex].data[i].name
+			);
+			dictionaryDataKeys = Object.keys(dictionaryData);
+			console.log("loaded dictionaryData:", dictionaryData);
+		} catch (error) {
+			console.error(error.message);
 		}
-		await extractData(response);
-		dictionaryDataKeys = Object.keys(dictionaryData);
-		console.log("loaded dictionaryData:", dictionaryData);
-		document.dispatchEvent(dictionaryDataLoadedEvent);
-	} catch (error) {
-		console.error(error.message);
 	}
+	console.log("finished getDictionaryData");
+	document.dispatchEvent(dictionaryDataLoadedEvent);
 }
 
-async function extractData(response) {
-	if (dictionaryList[dictionaryIndex].contentType == "application/json") {
+async function extractData(response, contentType, type) {
+	if (contentType == "application/json") {
 		const json = await response.json();
 		//使用するデータのみを抽出
 		for (let i = 0; i < json.length; i++) {
-			// console.log("読み込み:",i, json[i][0], json[i][1].split("//")[0]);
-			dictionaryData[json[i][0]] = json[i][1].split("//")[0];
+			const means = json[i][1].split("//");
+			for (let j = 0; j < means.length; j++) {
+				if (!dictionaryData[json[i][0]]) {
+					dictionaryData[json[i][0]] = [];
+				}
+				dictionaryData[json[i][0]].push({ mean: means[j], type: type });
+			}
 		}
-	} else if (dictionaryList[dictionaryIndex].contentType == "text/csv") {
+	} else if (contentType == "text/csv") {
 		const text = await response.text();
 		const lines = text.split(/\r\n|\n|\r/);
 		lines.splice(0, 1); //ヘッダー行を削除
 		for (let i = 0; i < lines.length; i++) {
 			const line = lines[i].split(",");
+			// 一行目をはスキップ
 			if (line.length < 2) {
 				continue;
 			}
-			dictionaryData[line[0]] = line[1];
+			const means = line[1].split("//");
+			for (let j = 0; j < means.length; j++) {
+				if (!dictionaryData[line[0]]) {
+					dictionaryData[line[0]] = [];
+				}
+				dictionaryData[line[0]].push({ mean: means[j], type: type });
+			}
 		}
 	} else {
-		throw new Error(`未対応のファイル形式です:` + dictionaryList[dictionaryIndex].contentType);
+		throw new Error(`未対応のファイル形式です:` + contentType);
 	}
 }
 
 //辞書データを使用して変換
 function changeWord(text) {
-	let result = text;
+	let result = [
+		{
+			text: text,
+			type: "original",
+		},
+	];
 	dictionaryDataKeys.forEach(function (word) {
-		if (result.indexOf(word) != -1) {
-			result = result.replaceAll(word, dictionaryData[word]);
+		if (text.indexOf(word) != -1) {
+			for (let i = 0; i < result.length; i++) {
+				if (i >= 10) {
+					break;
+				}
+				if (result[i].type == "original") {
+					let splitted = result[i].text.split(word);
+					let changed = [];
+					changed.push({
+						text: splitted[0],
+						type: "original",
+					});
+					for (let j = 1; j < splitted.length; j++) {
+						changed.push({
+							text: dictionaryData[word][0].mean,
+							type: "changed",
+							original: word,
+						});
+						changed.push({
+							text: splitted[j],
+							type: "original",
+						});
+					}
+					changed = changed.filter((e) => e.text !== "");
+					result.splice(i, 1, ...changed);
+					i += changed.length - 1; // 新しい要素の数だけインデックスを進める
+				}
+			}
+			// result = result.replaceAll(
+			// 	word,
+			// 	`<span class="changed-word" data-original="${word}">${dictionaryData[word][0].mean}</span>`
+			// );
 		}
 	});
-	return result;
+	// console.log("result:", result);
+	return convertResultArrayToHTML(result);
+}
+
+function convertResultArrayToHTML(result) {
+	if (typeof result === "string") {
+		// 文字列が渡された場合はそのまま返す
+		return result;
+	}
+	let resultText = "";
+	result.forEach((element) => {
+		if (element.type == "original") {
+			resultText += element.text;
+		} else if (element.type == "changed") {
+			resultText += `<span class="changed-word" data-original="${element.original}">${element.text}</span>`;
+		}
+	});
+	return resultText;
+}
+
+// 辞書から検索
+function searchWord(word) {
+	if (dictionaryData[word]) {
+		return dictionaryData[word];
+	} else {
+		return word;
+	}
 }
 
 // chatGPTを使用して変換
 async function changeWordWithChatGPT(text) {
-	if(!apiUrl){
-		console.error("AIを使用した変換は現在利用できません");
-		return text;
-	}
-	const params = new URLSearchParams({ text: text });
-	const url = `${apiUrl}?${params.toString()}`;
+	const url = apiUrl;
+
 	try {
-		const response = await fetch(url);
+		const response = await fetch(url, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ text: text }),
+		});
 		if (!response.ok) {
 			throw new Error(`レスポンスステータス: ${response.status}`);
 		}
@@ -103,7 +185,8 @@ async function changeWordWithChatGPT(text) {
 		} else if (json.status != "success") {
 			throw new Error(`APIエラー: ${json.status} : ${json.message}`);
 		}
-		return json.data;
+		// return json.data;
+		return convertResultArrayToHTML(json.data);
 	} catch (error) {
 		console.error("chatGPT変換エラー:", error.message);
 		return text; // エラーが発生した場合は元のテキストを返す
@@ -143,14 +226,6 @@ function getSynonymFromWeblio(word) {
 		.catch((error) => {
 			console.error(error.message);
 		});
-}
-
-function makeCsv() {
-	let csv = dictionaryList[dictionaryIndex]["displayName"] + ",日本語\n";
-	for (let i = 0; i < dictionaryDataKeys.length; i++) {
-		csv += dictionaryDataKeys[i] + "," + dictionaryData[dictionaryDataKeys[i]] + "\n";
-	}
-	console.log(csv);
 }
 
 //デバッグ用
