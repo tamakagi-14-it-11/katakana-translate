@@ -7,13 +7,17 @@
 		<link rel="stylesheet" href="./style.css" />
 	</head>
 	<body>
-		<span id="dic-select-wrapper">
-			<select title="select-dictionary" id="dic-select"></select>
-		</span>
-		<label>
-			<input type="checkbox" id="enable-ai" />
-			AI翻訳を使用する
-		</label>
+		<div class="dic-ai-area">
+			<div id="dic-select-wrapper">
+				<select title="select-dictionary" id="dic-select"></select>
+			</div>
+			<div id="ai">
+				<label>
+					<input type="checkbox" id="enable-ai" />
+					AI翻訳を使用する
+				</label>
+			</div>
+		</div>
 		<div class="main-contents">
 			<span class="text">
 				<textarea id="word-input" class="word-input" placeholder="翻訳元"></textarea>
