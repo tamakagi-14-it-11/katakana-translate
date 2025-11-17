@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>カタカナ語翻訳 | ユーザー辞書</title>
+		<link rel="stylesheet" href="./style.css" />
+	</head>
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>カタカナ語翻訳 | ユーザー辞書</title>
-	<link rel="stylesheet" href="./style.css" />
-</head>
-
-<body>
-
-	<!-- <span id="dic-select-wrapper">
+	<body>
+		<!-- <span id="dic-select-wrapper">
 			<select title="select-dictionary" id="dic-select"></select>
 		</span> -->
-	<br />
-	<span id="user-dic">
-		<table id="add-dic" class="add-dic">
-			<tr>
-				<th>翻訳元</th>
-				<th>意味</th>
-			</tr>
-			<tr>
-				<td><input type="text" id="original-words" /></td>
-				<td><input type="text" id="mean" /></td>
-			</tr>
-		</table>
-		<button id="add-frame">枠を追加</button>
-		<button id="del-frame">枠を削除</button>
-		<button id="save">保存</button>
-		<button id="load">読み込み</button>
-	</span>
-	<!-- <span id="buttons">
+		<!-- <br /> -->
+		<span id="user-dic">
+			<table id="add-dic" class="add-dic">
+				<thead>
+					<tr>
+						<th>翻訳元</th>
+						<th>意味</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- <tr>
+						<td><input type="text" id="original-words" /></td>
+						<td><input type="text" id="mean" /></td>
+					</tr> -->
+				</tbody>
+			</table>
+			<span id="buttons">
+				<button id="add-frame">枠を追加</button>
+				<button id="del-frame">枠を削除</button>
+				<button id="save">保存</button>
+				<button id="load">読み込み</button>
+			</span>
+		</span>
+		<!-- <span id="buttons">
 			<span id="cam-button">
 				<a href="../image-input/">
 					<img id="cam" class="circle-button" src="../image/button_ocr.png" alt="camera" />
@@ -47,8 +51,7 @@
 				</a>
 			</span>
 		</span> -->
-</body>
-<script src="../common.js"></script>
-<script src="./main.js"></script>
-
+	</body>
+	<script src="../common.js"></script>
+	<script src="./main.js"></script>
 </html>

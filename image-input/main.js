@@ -4,11 +4,23 @@ const uploadButton = document.getElementById("upload");
 const fileInput = document.getElementById("file-input");
 const result = document.getElementById("result");
 
+function updateResult(text) {
+	result.innerHTML = text;
+	// document.querySelectorAll(".changed-word").forEach((element) => {
+	// 	element.addEventListener("click", function (e) {
+	// 		// console.log("変換前:" + this.dataset.original);
+	// 		// alert("変換前:" + this.dataset.original);
+	// 		e.stopPropagation(); // クリックイベントの伝播を止める
+	// 		makeTooltip(element);
+	// 	});
+	// });
+}
+
 function startOCR(file) {
 	Tesseract.recognize(file, "jpn", { logger: (m) => console.log("tesseract:", m) }).then((ocrResult) => {
 		console.log("ocrResult:", ocrResult);
 		const text = ocrResult.data.text.replace(/\s+/g, "");
-		result.textContent = changeWord(text);
+		updateResult(changeWord(text));
 		return text;
 	});
 }
@@ -24,7 +36,7 @@ fileInput.addEventListener("change", (event) => {
 		reader.readAsDataURL(file);
 		startOCR(file);
 		uploadButton.style.display = "none";
-		result.textContent = "loading...";
+		updateResult("loading...");
 	} else {
 		preview.style.display = "none";
 		preview.src = "";

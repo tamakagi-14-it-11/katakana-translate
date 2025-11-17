@@ -2,6 +2,7 @@
 const dicSelect = document.getElementById("dic-select");
 const userDic = document.getElementById("user-dic");
 const addDic = document.getElementById("add-dic");
+const tbody = addDic.querySelector("tbody");
 const originalWords = document.getElementById("original-words");
 const mean = document.getElementById("mean");
 const addFrame = document.getElementById("add-frame");
@@ -12,26 +13,45 @@ const loadButton = document.getElementById("load");
 //変数の宣言
 let userDictionaryList = [];
 
+//関数の宣言
+function update() {
+	save();
+	//最後の行のwordが空白でないなら行を追加
+	const lastRow = addDic.rows[addDic.rows.length - 1];
+	if (lastRow.cells[0].children[0].value) {
+		add();
+	}
+}
+
 //枠の追加
-function add(word, mean) {
+function add(word = "", mean = "") {
 	let tr = document.createElement("tr");
 	for (let i = 0; i < 2; i++) {
 		let td = document.createElement("td");
 		let inp = document.createElement("input");
-		inp.addEventListener("input", function () {
-			save();
-			console.log("保存しました");
-		});
+		inp.type = "text";
+		inp.addEventListener("input", update);
 		td.appendChild(inp);
 		tr.appendChild(td);
 	}
+	//削除ボタンを追加
+	const deleteTd = document.createElement("td");
+	const deleteBtn = document.createElement("button");
+	deleteBtn.textContent = "削除";
+	deleteBtn.addEventListener("click", function () {
+		const tr = this.parentNode.parentNode;
+		tbody.removeChild(tr);
+		update();
+	});
+	deleteTd.appendChild(deleteBtn);
+	tr.appendChild(deleteTd);
 	tr.cells[0].children[0].value = word;
 	tr.cells[1].children[0].value = mean;
-	addDic.appendChild(tr);
+	tbody.appendChild(tr);
 }
 
 addFrame.addEventListener("click", function () {
-	add("", "");
+	add();
 });
 
 //枠の削除
@@ -50,6 +70,9 @@ function save() {
 	for (let i = 1; i < addDic.rows.length; i++) {
 		let word = addDic.rows[i].cells[0].children[0].value;
 		let mean = addDic.rows[i].cells[1].children[0].value;
+		if (!word) {
+			continue;
+		}
 		userDictionaryList.push({ word: word, mean: mean });
 	}
 	localStorage.dicData = JSON.stringify(userDictionaryList);
@@ -60,19 +83,19 @@ saveButton.addEventListener("click", save);
 
 //ローカルストレージから取得し，表に表示
 function load() {
-	if (!localStorage.dicData) {
-		return;
-	}
-	while (addDic.rows.length > 1) {
-		addDic.deleteRow(1);
-	}
-	let storedList = JSON.parse(localStorage.dicData); // 修正: キーを追加
-	if (storedList) {
-		userDictionaryList = storedList;
-		for (let i = 0; i < userDictionaryList.length; i++) {
-			add(userDictionaryList[i].word, userDictionaryList[i].mean);
+	if (localStorage.dicData) {
+		while (addDic.rows.length > 1) {
+			addDic.deleteRow(1);
+		}
+		let storedList = JSON.parse(localStorage.dicData); // 修正: キーを追加
+		if (storedList) {
+			userDictionaryList = storedList;
+			for (let i = 0; i < userDictionaryList.length; i++) {
+				add(userDictionaryList[i].word, userDictionaryList[i].mean);
+			}
 		}
 	}
+	add();
 }
 
 loadButton.addEventListener("click", load);

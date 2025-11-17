@@ -79,27 +79,28 @@ function makeTooltip(element) {
 	tooltip.style.top = `${rect.top + window.scrollY + element.offsetHeight + 5}px`;
 }
 
-function updateResult(e) {
+function updateResult(text) {
+	textArea_result.innerHTML = text;
+	document.querySelectorAll(".changed-word").forEach((element) => {
+		element.addEventListener("click", function (e) {
+			// console.log("変換前:" + this.dataset.original);
+			// alert("変換前:" + this.dataset.original);
+			e.stopPropagation(); // クリックイベントの伝播を止める
+			makeTooltip(element);
+		});
+	});
+	updateWordAreaHeight();
+}
+
+function startTranslate(e) {
 	if (e.target.value === "") {
-		textArea_result.innerHTML = "";
-		updateWordAreaHeight();
+		updateResult("");
 		return;
 	}
 	startTime = Date.now();
 	// 辞書変換
-	textArea_result.innerHTML = changeWord(e.target.value);
-	document.querySelectorAll(".changed-word").forEach((element) => {
-		element.addEventListener("click", function (e) {
-			console.log("変換前:" + this.dataset.original);
-			// alert("変換前:" + this.dataset.original);
-
-			e.stopPropagation();
-
-			makeTooltip(element);
-		});
-	});
+	updateResult(changeWord(e.target.value));
 	console.log("単語変換時間:", Date.now() - startTime, "ms");
-	updateWordAreaHeight();
 	// AI変換
 	if (useAI) {
 		counter++;
@@ -114,9 +115,8 @@ function updateResult(e) {
 						console.log("AI変換キャンセル:", originalText, ":", e.target.value);
 						return;
 					}
-					textArea_result.innerHTML = aiConvertedText;
+					updateResult(aiConvertedText);
 					console.log("AI変換時間:", Date.now() - startTime, "ms");
-					updateWordAreaHeight();
 				});
 			}
 		}, timeout);
@@ -170,7 +170,7 @@ function startGetDictionaryData() {
 
 function main() {
 	changeStatus("");
-	textArea_wordInput.addEventListener("input", updateResult);
+	textArea_wordInput.addEventListener("input", startTranslate);
 }
 
 dicSelect.addEventListener("change", function () {

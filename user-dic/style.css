@@ -42,9 +42,16 @@ body {
 }
 
 #user-dic {
-	position: absolute;
-	top: 100px;
-	padding-bottom: 12em;
+	margin: 0;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.add-dic {
+	margin-top: 20px;
 }
 
 .circle-button {
@@ -75,34 +82,34 @@ body {
 }
 
 @media (width <=600px) {
-	#cam-button>a>.circle-button {
+	#cam-button > a > .circle-button {
 		height: 75px;
 		width: 75px;
 	}
 
-	#voice-button>a>.circle-button {
+	#voice-button > a > .circle-button {
 		height: 100px;
 		width: 100px;
 	}
 
-	#text-button>a>.circle-button {
+	#text-button > a > .circle-button {
 		height: 75px;
 		width: 75px;
 	}
 }
 
 @media (600px < width) {
-	#cam-button>a>.circle-button {
+	#cam-button > a > .circle-button {
 		height: 100px;
 		width: 100px;
 	}
 
-	#voice-button>a>.circle-button {
+	#voice-button > a > .circle-button {
 		height: 100px;
 		width: 100px;
 	}
 
-	#text-button>a>.circle-button {
+	#text-button > a > .circle-button {
 		height: 100px;
 		width: 100px;
 	}
