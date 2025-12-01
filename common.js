@@ -46,12 +46,23 @@ async function getDictionaryData() {
 				dictionaryList[dictionaryIndex].data[i].contentType,
 				dictionaryList[dictionaryIndex].data[i].name
 			);
-			dictionaryDataKeys = Object.keys(dictionaryData);
 			console.log("loaded dictionaryData:", dictionaryData);
 		} catch (error) {
 			console.error(error.message);
 		}
 	}
+	// ユーザー辞書の読み込み
+	if (localStorage.dicData) {
+		let userDicData = JSON.parse(localStorage.dicData);
+		userDicData.forEach((item) => {
+			if (!dictionaryData[item.word]) {
+				dictionaryData[item.word] = [];
+			}
+			dictionaryData[item.word].push({ mean: item.mean, type: "User Dictionary" });
+			console.log(item.word, item.mean);
+		});
+	}
+	dictionaryDataKeys = Object.keys(dictionaryData);
 	console.log("finished getDictionaryData");
 	document.dispatchEvent(dictionaryDataLoadedEvent);
 }
