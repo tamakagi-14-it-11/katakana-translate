@@ -30,3 +30,19 @@
 ## AI翻訳について
 
 テキスト入力,音声入力ではAIを利用した高度な翻訳が可能です。左上のチェックボックスから有効化できます。
+
+## セルフホストする方法
+
+1. 任意のWebサーバーにコードをすべて配置
+2. [ここ](https://github.com/tamakagi-14-it-11/katakana-translate-api?tab=readme-ov-file#katakana-translate-api)の指示に従ってAPIサーバーを起動
+3. `common.js` の **2行目** にAPIサーバーのURLを書き換え
+
+IPアドレスが `127.0.0.1` で、ポートがデフォルト( `5000` )の場合
+
+```diff
+//定数の宣言
+- const apiUrl = "https://api.tkg14it11.f5.si/api2/";
++ const apiUrl = "http://127.0.0.1:5000/api2/";
+```
+
+4. Webサーバーにアクセスし、AI翻訳の動作を確認
